@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <script src="/main.js" defer></script>
+    <title>TTTNO</title>
+  </head>
+  <body>
+    <h1>Welcome to Tic-Tac-Toe</h1>
+
+    <div class="outer-wrap">
+      <div id="first-intro-screen" class="question-screen play">
+        <!-- we can enter the SVG's here, not sure how yet? -->
+        <p>Do you want to play? Please pick!</p>
+        <div class="chooser" id="chooser">
+          <button class="choice-0" id="O-button">O</button>
+          <p>or</p>
+          <button class="choice-X" id="X-button">X</button>
+        </div>
+      </div>
+      <div class="hidden images" id="win-image">
+        <img src="/assets/playerWins.jpeg" alt="" />
+      </div>
+      <div class="hidden images" id="lose-image">
+        <img src="/assets/computer_win.gif" alt="" />
+      </div>
+      <div class="hidden images" id="draw-image">
+        <img src="/assets/draw.gif" alt="" />
+      </div>
+
+      <div id="playagain-screen" class="question-screen playagain hidden">
+        <!-- we can enter the SVG's here, not sure how yet? -->
+        <p>Do you want to play again?</p>
+        <div class="chooser">
+          <!-- we can change these to buttons instead and also the above -->
+          <button class="yes" id="yes">Y</button>
+          <p></p>
+          <button class="no" id="no">N</button>
+        </div>
+      </div>
+      <!-- The board with the 9 cells -->
+      <div class="board-container">
+        <div class="board top left" data-pos="0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought a1 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross a1 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board top" data-pos="1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought a2 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross a2 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board top right" data-pos="2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought a3 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross a3 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board left" data-pos="3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought b1 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross b1 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board" data-pos="4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought b2 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross b2 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board right" data-pos="5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought b3 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross b3 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board bottom left" data-pos="6">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought c1 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross c1 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board bottom" data-pos="7">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought c2 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross c2 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div class="board bottom right" data-pos="8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="nought c3 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <circle
+              cx="77.5"
+              cy="77.5"
+              r="41.5"
+              stroke="yellow"
+              stroke-width="5"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="cross c3 hidden"
+            width="125"
+            height="125"
+            viewBox="0 0 155 155"
+            fill="none"
+          >
+            <line
+              x1="37.5304"
+              y1="42.8097"
+              x2="121.81"
+              y2="118.47"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <line
+              x1="34.1903"
+              y1="118.47"
+              x2="118.47"
+              y2="42.8097"
+              stroke="#FB0707"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
